@@ -1,0 +1,38 @@
+version: '3'
+
+volumes:
+  kittygram_final_pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - kittygram_final_pg_data:/var/lib/postgresql/data
+  backend:
+    image: qorgiz/kittygram_final-backend
+    env_file: .env
+    volumes:
+      - static:/backend_static
+      - media:/app/media
+    depends_on:
+      - db
+  frontend:
+    env_file: .env
+    image: qorgiz/kittygram_final-frontend
+    command: cp -r /app/build/. /frontend_static/
+    volumes:
+      - static:/frontend_static
+  gateway:
+    depends_on:
+      - db
+      - backend
+    image: qorgiz/kittygram_final-gateway
+    env_file: .env
+    ports:
+      - 9000:80
+    volumes:
+      - static:/static
+      - media:/mediafiles/
