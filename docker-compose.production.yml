@@ -27,7 +27,6 @@ services:
       - static:/frontend_static
   gateway:
     depends_on:
-      - db
       - backend
     image: qorgiz/kittygram_final-gateway
     env_file: .env
