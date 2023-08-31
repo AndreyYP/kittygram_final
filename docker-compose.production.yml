@@ -20,6 +20,8 @@ services:
     depends_on:
       - db
   frontend:
+    depends_on:
+      - backend
     env_file: .env
     image: qorgiz/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
