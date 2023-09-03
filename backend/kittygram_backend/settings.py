@@ -10,7 +10,8 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
 
-DEBUG = os.getenv('DEBUG', default='True')
+DEBUG = False
+# DEBUG = os.getenv('DEBUG', default='True') # На сервере в файле .env DEBUG = 'False'
 
 ALLOWED_HOSTS = []
 
