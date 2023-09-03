@@ -9,7 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
-DEBUG = 'False'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+#DEBUG = 'False'
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '51.250.105.42', 'kittygramz.sytes.net']
 
 INSTALLED_APPS = [
