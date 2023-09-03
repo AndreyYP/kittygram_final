@@ -10,10 +10,9 @@ load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='secret_key')
 
-DEBUG = False
-# DEBUG = os.getenv('DEBUG', default='True') # На сервере в файле .env DEBUG = 'False'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '51.250.105.42', 'kittygramz.sytes.net']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
